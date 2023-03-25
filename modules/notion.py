@@ -4,8 +4,6 @@ import pandas as pd
 import datetime
 import sqlite3
 
-notion_key = os.environ['notion_api']
-
 
 def process_notion_db(results):
   # Define an empty list to store the data
@@ -26,7 +24,7 @@ def process_notion_db(results):
       "work_rating": result["properties"]["Work"]["number"],
       "life_rating": result["properties"]["Life"]["number"]
     }
-    pd_row = pd.DataFrame(row)
+    pd_row = pd.DataFrame(row, index=[0])
     notion_df = pd.concat([pd_row, notion_df], ignore_index=True)
 
   notion_df["date"] = pd.to_datetime(notion_df["date"])
@@ -81,7 +79,7 @@ def insert_data_into_table(df, db_path, table_name):
   conn.close()
 
 
-def query_notion_table(db="../health_data.db"):
+def query_notion_table(db="health_data.db"):
   conn = sqlite3.connect(db)
   cursor = conn.cursor()
 
