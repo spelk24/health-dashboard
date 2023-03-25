@@ -25,6 +25,11 @@ def process_notion_db(results):
       "life_rating": result["properties"]["Life"]["number"]
     }
     pd_row = pd.DataFrame(row, index=[0])
+    # Identify columns with all-bool values
+    bool_cols = pd_row.columns[(pd_row.dtypes == 'object') & (pd_row.astype(str).apply(lambda x: x.str.lower().isin(['true', 'false']).all()))]
+    # Convert identified columns to bool dtype
+    pd_row[bool_cols] = pd_row[bool_cols].astype(bool)
+
     notion_df = pd.concat([pd_row, notion_df], ignore_index=True)
 
   notion_df["date"] = pd.to_datetime(notion_df["date"])
