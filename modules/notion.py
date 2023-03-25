@@ -1,4 +1,5 @@
 from notion_client import Client
+import os
 import pandas as pd
 import datetime
 import sqlite3
@@ -25,7 +26,8 @@ def process_notion_db(results):
       "work_rating": result["properties"]["Work"]["number"],
       "life_rating": result["properties"]["Life"]["number"]
     }
-    notion_df = notion_df.append(row, ignore_index=True)
+    pd_row = pd.DataFrame(row)
+    notion_df = pd.concat([pd_row, notion_df], ignore_index=True)
 
   notion_df["date"] = pd.to_datetime(notion_df["date"])
   return notion_df
@@ -98,9 +100,3 @@ def query_notion_table(db="../health_data.db"):
   cursor.close()
   conn.close()
   return df
-
-
-# Use Functions
-final_df = get_all_notion_data(notion_key)
-insert_data_into_table(final_df, "../health_data.db", "notion_data")
-notion_df = query_notion_table()
