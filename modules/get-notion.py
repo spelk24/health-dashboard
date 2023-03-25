@@ -35,7 +35,7 @@ def process_notion_db(results):
 
 def get_all_notion_data():
     # API Key and DB ID
-    notion = Client(auth="secret_iRmq18f6OvFbtX3Aui0QsBAaYzWFpI4YBm7tVgrkk1f")
+    notion = Client(auth="")
     database_id = "290db37697724cb79c3bd3a8cf6a7820"
     database = notion.databases.retrieve(database_id)
 
