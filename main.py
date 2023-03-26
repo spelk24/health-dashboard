@@ -39,10 +39,10 @@ def index():
   # Create a list of plots, one for each numerical column
   plots = []
   for i, col in enumerate(numerical_cols):
-    fig = px.line(plot_data, x='date', y=col, title=col.capitalize())
+    fig = px.line(plot_data, x='date', y=col)
 
     # Set the background color of the plot to white
-    fig.update_layout(plot_bgcolor='white')
+    fig.update_layout(plot_bgcolor='white', height=250)
 
     # Set the line color to a different color for each plot
     fig.update_traces(line_color=colors[i])
@@ -50,19 +50,27 @@ def index():
     # Set the y-axis scale to 0-10
     fig.update_yaxes(range=[0, 10])
 
+    # Remove axis titles and plot title
+    fig.update_layout(title='',
+                      xaxis_title='',
+                      yaxis_title='',
+                      margin=dict(l=0, r=0, t=0, b=0))
+
     # Add major gridlines and x and y lines
     fig.update_xaxes(showgrid=True,
                      gridwidth=1,
                      gridcolor=gridline_color,
                      showline=True,
                      linewidth=1,
-                     linecolor=grid_color)
+                     linecolor=grid_color,
+                     automargin=0)
     fig.update_yaxes(showgrid=True,
                      gridwidth=1,
                      gridcolor=gridline_color,
                      showline=True,
                      linewidth=1,
-                     linecolor=grid_color)
+                     linecolor=grid_color,
+                     automargin=0)
 
     plots.append(fig.to_html(full_html=False))
 

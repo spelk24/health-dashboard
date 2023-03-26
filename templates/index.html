@@ -1,16 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Notion Data Plots</title>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
-</head>
-<body>
-  <div class="container">
-    {% for plot in plots %}
-      <div>{{ plot|safe }}</div>
-    {% endfor %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProActive Health</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <br>
+    <div class="container">
+      <div class="row">
+    <div class="col-md-6">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">Morning Energy</h5>
+          <p class="card-text">{{ plots[0]|safe }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Health</h5>
+          <p class="card-text">{{ plots[1]|safe }}</p>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Work</h5>
+          <p class="card-text">{{ plots[2]|safe }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Life</h5>
+          <p class="card-text">{{ plots[3]|safe }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  </body>
 </html>
