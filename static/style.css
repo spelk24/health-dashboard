@@ -1,16 +1,18 @@
 :root {
-      --energy-color: #66c2a5;
-      --health-color: #fc8d62;
-      --life-satisfaction-color: #e78ac3;
-      --work-satisfaction-color: #377eb8;
+      --dark-blue: #1D1D2C;
+      --cream: #F7F4E9;
+      --light-blue: #3CBCC3;
+      --orange: #EBA63F;
+      --green: #438945;
     }
 
 body {
-  font-family: 'Neuemontreal', sans-serif;
+  font-family: 'Sora', sans-serif;
+  background-color: rgba(240, 240, 240, 0.2);
 }
 
 .callout {
-  background-color: #f2f2f2 !important;
+  background-color: var(--cream) !important;
   border-radius: 8px !important;
   padding: 20px !important;
   margin: 10px 0 !important;
@@ -22,4 +24,31 @@ body {
 
 .container{
   max-width: 900px !important;
+}
+
+.navbar{
+  background-color: var(--dark-blue) !important;
+}
+
+.navbar-toggler{
+  background-color: var(--cream) !important;
+}
+
+.nav-link, .nav-item {
+  color: #ccc !important;
+}
+
+.navbar-brand{
+  color: white !important;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active,
+.a.nav-link,
+.a.nav-link.active,
+.nav-item:hover,
+.nav-item:focus,
+.nav-item.active {
+  color: #fff !important;
 }

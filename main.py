@@ -24,9 +24,9 @@ numerical_cols = [
 notion_df = query_notion_table()
 
 # Colors
-gridline_color = '#f0f0f0'
+gridline_color = "#f0f0f0"  #f0f0f0"
 grid_color = "#252525"
-colors = ['#66c2a5', '#fc8d62', '#e78ac3', '#377eb8']
+colors = ["#438945", "#EBA63F", "#3CBCC3", "#E40C2B", "#1D1D2C", "#F7F4E9"]
 
 
 @app.route('/')
@@ -122,7 +122,7 @@ def habits():
                   gap=1,
                   month_lines_width=.7,
                   month_lines_color="#e5f5e0",
-                  colorscale=[(0.00, "#f7fcf5"), (1.00, "#41ab5d")])
+                  colorscale=[(0, "#f7fcf5"), (1, "#41ab5d")])
 
     plot = fig.to_html(full_html=False, config={'displayModeBar': False})
     plots.append(plot)

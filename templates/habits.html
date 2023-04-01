@@ -4,35 +4,51 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <div class="container">
   <div class="row">
-    <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">No Drinks</h5>
-          <p class="card-text">{{ plots[0]|safe }}</p>
+    <div class="col-md-8">
+      <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">No Drinks</h5>
+            <p class="card-text">{{ plots[0]|safe }}</p>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Streaks</h5>
+            <p class="card-text">Longest Streak: 39</p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">No Binge Drinking</h5>
+            <p class="card-text">{{ plots[1]|safe }}</p>
+          </div>
         </div>
     </div>
   </div>
   <div class="row">
-    <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">No Binge Drinking</h5>
-          <p class="card-text">{{ plots[1]|safe }}</p>
-        </div>
+    <div class="col-md-8">
+      <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Read 15 Minutes</h5>
+            <p class="card-text">{{ plots[2]|safe }}</p>
+          </div>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">Read 15 Minutes</h5>
-          <p class="card-text">{{ plots[2]|safe }}</p>
-        </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="card" >
-        <div class="card-body">
-          <h5 class="card-title">Journal</h5>
-          <p class="card-text">{{ plots[3]|safe }}</p>
-        </div>
+    <div class="col-md-8">
+      <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Journal</h5>
+            <p class="card-text">{{ plots[3]|safe }}</p>
+          </div>
+      </div>
     </div>
   </div>
 </div>
