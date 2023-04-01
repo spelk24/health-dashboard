@@ -2,6 +2,7 @@ from modules.notion import *
 from flask import Flask, render_template
 import pandas as pd
 import plotly.express as px
+from plotly_calplot import calplot
 import plotly.graph_objects as go
 import warnings
 from datetime import datetime, timedelta
@@ -101,6 +102,31 @@ def index():
 
   # Pass plots to index.html template
   return render_template('index.html', plots=plots)
+
+
+@app.route('/habits')
+def habits():
+  # convert date column to datetime format
+  current_year = datetime.now().year
+  first_day_of_year = datetime(current_year, 1, 1)
+  notion_df['date'] = pd.to_datetime(notion_df['date'])
+  plot_data = notion_df[notion_df["date"] >= first_day_of_year].reset_index()
+
+  plots = []
+  cols = ["no_drinks", "no_binge_drinking", "read_15_min", "journal_entry"]
+  for col in cols:
+    fig = calplot(plot_data,
+                  x="date",
+                  y=col,
+                  years_title=True,
+                  gap=1,
+                  month_lines_width=.7,
+                  month_lines_color="#e5f5e0",
+                  colorscale=[(0.00, "#f7fcf5"), (1.00, "#41ab5d")])
+
+    plot = fig.to_html(full_html=False, config={'displayModeBar': False})
+    plots.append(plot)
+  return render_template('habits.html', plots=plots)
 
 
 app.run(host='0.0.0.0', port=8080)
